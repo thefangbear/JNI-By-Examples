@@ -66,3 +66,25 @@ JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_Utilities_returnAByteArray
     std::cout << std::endl << std::endl;
     return __ba;
 }
+
+/*
+ * ==============IMPLEMENTATION=================
+ * Class:     in_derros_jni_Utilities
+ * Method:    stringManipulator
+ * Signature: (Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_in_derros_jni_Utilities_stringManipulator
+        (JNIEnv *env, jobject obj, jstring str, jobjectArray strObj1) {
+    std::string s = env->GetStringUTFChars(str, (jboolean)false);
+    std::cout << "NOW IN NATIVE STRING ENVIRONMENT!!" << std::endl;
+    std::cout << "Your caller says: " << s << std::endl;
+    std::cout << "Now iterating over the given string array." << std::endl;
+    // iterate over
+    for(int i = 0; i < env->GetArrayLength(strObj1); i++) {
+        std::cout
+                << env->GetStringUTFChars((jstring)env->GetObjectArrayElement(strObj1, (jsize)i), (jboolean)false)
+                << std::endl;
+    }
+    s.append("::::::THIS IS APPENDED TEXT!!!! WARNING!!! WARNING!!!! :)");
+    return env->NewStringUTF(s.data());
+}

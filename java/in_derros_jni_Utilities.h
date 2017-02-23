@@ -39,6 +39,14 @@ JNIEXPORT jint JNICALL Java_in_derros_jni_Utilities_power
 JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_Utilities_returnAByteArray
   (JNIEnv *, jobject);
 
+/*
+ * Class:     in_derros_jni_Utilities
+ * Method:    stringManipulator
+ * Signature: (Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_in_derros_jni_Utilities_stringManipulator
+  (JNIEnv *, jobject, jstring, jobjectArray);
+
 #ifdef __cplusplus
 }
 #endif
