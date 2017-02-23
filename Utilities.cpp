@@ -3,6 +3,8 @@
 //
 
 
+#include <vector>
+#include <algorithm>
 #include "Utilities.h"
 
 #include "java/in_derros_jni_Utilities.h"
@@ -44,3 +46,23 @@ JNIEXPORT jint JNICALL Java_in_derros_jni_Utilities_power
     return (jint) std::pow(__i1_n, __i2_n);
 }
 
+/*
+ * ================IMPLEMENTATION================
+ * Class:     in_derros_jni_Utilities
+ * Method:    returnAByteArray
+ * Signature: ()[B
+ */
+JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_Utilities_returnAByteArray
+        (JNIEnv *env, jobject obj) {
+    jbyteArray __ba = env->NewByteArray(3);
+    std::vector<unsigned char> __c_vec(3);
+    __c_vec[0] = 0;
+    __c_vec[1] = 1;
+    __c_vec[2] = 1;
+    unsigned char * __c_ptr = __c_vec.data();
+    env->SetByteArrayRegion (__ba, 0, 3, reinterpret_cast<jbyte*>(__c_ptr));
+    std::cout << "Printing Byte Array members..." << std::endl;
+    std::for_each(__c_vec.begin(), __c_vec.end(), [](const char &c) { std::cout << c ; });
+    std::cout << std::endl << std::endl;
+    return __ba;
+}

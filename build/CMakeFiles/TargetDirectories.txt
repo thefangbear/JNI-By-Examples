@@ -1,3 +1,0 @@
-/home/alex/Projects/jnitests/build/CMakeFiles/edit_cache.dir
-/home/alex/Projects/jnitests/build/CMakeFiles/rebuild_cache.dir
-/home/alex/Projects/jnitests/build/CMakeFiles/jnitests.dir

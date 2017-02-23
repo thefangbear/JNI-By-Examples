@@ -31,6 +31,14 @@ JNIEXPORT jboolean JNICALL Java_in_derros_jni_Utilities_trueFalse
 JNIEXPORT jint JNICALL Java_in_derros_jni_Utilities_power
   (JNIEnv *, jobject, jint, jint);
 
+/*
+ * Class:     in_derros_jni_Utilities
+ * Method:    returnAByteArray
+ * Signature: ()[B
+ */
+JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_Utilities_returnAByteArray
+  (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif
