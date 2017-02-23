@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -std=c++11 -O3 -DNDEBUG  -shared -Wl,-soname,libjnitests.so -o libjnitests.so CMakeFiles/jnitests.dir/Utilities.cpp.o 
