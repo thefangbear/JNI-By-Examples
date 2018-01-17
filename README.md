@@ -5,6 +5,8 @@
  you may still take it as a simple reference guide to get started. JNI is quite simple to program, and the most difficult
  bit of it is to actually load your dynamic library from your jar file. If you're good with C/C++, you shall be quite easily
  bootstrapped after reading some material.
+ 
+ **Note 2**: This example also shows you how to use **CMake** to compile your source files for JNI!
 
 This is an examples repository for Java's JNI. The codes are written in C++ and Java, properly demonstrating the correct way to interact with JNI through tools like `javah` and `javac`. Alternatively, the CMakeLists.txt utilizes CMake to compile the C++ library along with JNI implementations, and the jnihelper.sh shell script provides decent helper utilities to rapidly prototype a JNI library.
 
