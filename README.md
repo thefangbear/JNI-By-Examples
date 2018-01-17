@@ -40,6 +40,59 @@ JNIEXPORT void JNICALL Java_in_derros_jni_Utilities_printMethod
 ```
 Note that `env` is especially helpful. For C++ guys `env` is a pointer to an instance of a class allocated on the heap (not exactly true but you can reason like that to help you navigate through) and for C guys the `env` variable is simply a pointer to a structure passed in, where the structure stores a bunch of function pointers you can use to access a bunch of JVM internal functions. A decent IDE is recommended here, as it saves you countless amounts of time to make you peek into these variables yourself, but you also can find sample implementations of functions of different return types (sometimes even iterator examples) in the sourcecode folder of this project. For the C++ implementation of JNI functions, you can find in `Utils.cpp` - and for all the java-related header files and class files you can find in the `java/` folder.
 
+Now, time for some examples...
+
+**Example 1: Converting a C++ `vector` to a Java `ByteArray` and return**
+```
+    jbyteArray __ba = env->NewByteArray(3);
+    std::vector<unsigned char> __c_vec(3);
+    __c_vec[0] = 0;
+    __c_vec[1] = 1;
+    __c_vec[2] = 1;
+    unsigned char * __c_ptr = __c_vec.data();
+    env->SetByteArrayRegion (__ba, 0, 3, reinterpret_cast<jbyte*>(__c_ptr));
+    std::cout << "Printing Byte Array members..." << std::endl;
+    std::for_each(__c_vec.begin(), __c_vec.end(), [](const char &c) { std::cout << c ; });
+    std::cout << std::endl << std::endl;
+    return __ba;
+```
+Note: `env` is provided in every JNI call to C++.
+
+**Example 2: Manipulating Java Strings in C++**
+
+(Well, actually not too accurate. We're copying over the string
+as a C `char*`, doing the manipulation, and returning one back)
+
+```
+   std::string s = env->GetStringUTFChars(str, (jboolean)false);
+    std::cout << "NOW IN NATIVE STRING ENVIRONMENT!!" << std::endl;
+    std::cout << "Your caller says: " << s << std::endl;
+    std::cout << "Now iterating over the given string array." << std::endl;
+    // iterate over
+    for(int i = 0; i < env->GetArrayLength(strObj1); i++) {
+        std::cout
+                << env->GetStringUTFChars((jstring)env->GetObjectArrayElement(strObj1, (jsize)i), (jboolean)false)
+                << std::endl;
+    }
+    s.append("::::::THIS IS APPENDED TEXT!!!! WARNING!!! WARNING!!!! :)");
+    return env->NewStringUTF(s.data());
+```
+
+**Example 3: Returning a boolean**
+
+This is to show that most of the primitive types are provided by the JNI header files.
+For example, a `boolean` is denoted by `jboolean`.
+The best way to code is to employ an IDE or use CTags to scan for types in the JNI header file.
+```
+    std::cout << "BOOL VALUE: 1 (True)" << std::endl;
+    jboolean b = 1;
+    return b;
+```
+
+**A Practical Tip:** Don't be afraid of casting! JNI is amazingly tolerant for casting between C primitive types
+and j-prefixed types. However, for most C++-specific objects, some manual labour is needed. A Java `byte` is roughly
+equal to a C++ `char`/`unsigned char`.
+
 This is about the end of your journy/actually coding/ a JNI application. Good luck!
 
 ### Finale: Build
@@ -61,7 +114,7 @@ Till now, you should be programming yourself away in JNI. JNI is a content-rich 
 
 ## Author
 
-Copyright &copy; R-J Alexander Fang 2017.
+Copyright &copy; Rui-Jie Fang 2018.
 
 ## License
 
