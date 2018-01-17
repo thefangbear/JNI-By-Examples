@@ -1,4 +1,10 @@
-# Java Native Interface Programming, By Examples
+# (Introductory) Java Native Interface Programming, By Examples
+
+**Note**: I wrote this in early 2017 because of a need to offload image serialization tasks to C++ from Java (Java's GC, bad
+ bad!) But now things may have changed with newer versions of Java 8 and 9. This repository is now seldomly updated, but
+ you may still take it as a simple reference guide to get started. JNI is quite simple to program, and the most difficult
+ bit of it is to actually load your dynamic library from your jar file. If you're good with C/C++, you shall be quite easily
+ bootstrapped after reading some material.
 
 This is an examples repository for Java's JNI. The codes are written in C++ and Java, properly demonstrating the correct way to interact with JNI through tools like `javah` and `javac`. Alternatively, the CMakeLists.txt utilizes CMake to compile the C++ library along with JNI implementations, and the jnihelper.sh shell script provides decent helper utilities to rapidly prototype a JNI library.
 
@@ -92,6 +98,8 @@ The best way to code is to employ an IDE or use CTags to scan for types in the J
 **A Practical Tip:** Don't be afraid of casting! JNI is amazingly tolerant for casting between C primitive types
 and j-prefixed types. However, for most C++-specific objects, some manual labour is needed. A Java `byte` is roughly
 equal to a C++ `char`/`unsigned char`.
+
+For **more examples** and getting a general "gist" of JNI to start, view the source code of this repository.
 
 This is about the end of your journy/actually coding/ a JNI application. Good luck!
 
