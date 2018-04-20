@@ -15,8 +15,20 @@
  * Method:    printMethod
  * Signature: ()V
  */
+
+bool is_initialized = 0;
+
+inline void Init() {
+
+    if(!is_initialized) {
+        std::ios::sync_with_stdio(false);
+        is_initialized = 1;
+    }
+}
+
 JNIEXPORT void JNICALL Java_in_derros_jni_Utilities_printMethod
         (JNIEnv *env, jobject obj) {
+    Init();
     std::cout << "Native method called. Printing garbage." << std::endl;
 }
 
@@ -28,6 +40,8 @@ JNIEXPORT void JNICALL Java_in_derros_jni_Utilities_printMethod
  */
 JNIEXPORT jboolean JNICALL Java_in_derros_jni_Utilities_trueFalse
         (JNIEnv *env, jobject obj) {
+
+    Init();
     std::cout << "BOOL VALUE: 1 (True)" << std::endl;
     jboolean b = 1;
     return b;
@@ -41,6 +55,8 @@ JNIEXPORT jboolean JNICALL Java_in_derros_jni_Utilities_trueFalse
  */
 JNIEXPORT jint JNICALL Java_in_derros_jni_Utilities_power
         (JNIEnv *env, jobject obj, jint i1, jint i2) {
+
+    Init();
     int __i1_n = i1;
     int __i2_n = i2;
     return (jint) std::pow(__i1_n, __i2_n);
@@ -54,6 +70,8 @@ JNIEXPORT jint JNICALL Java_in_derros_jni_Utilities_power
  */
 JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_Utilities_returnAByteArray
         (JNIEnv *env, jobject obj) {
+
+    Init();
     jbyteArray __ba = env->NewByteArray(3);
     std::vector<unsigned char> __c_vec(3);
     __c_vec[0] = 0;
@@ -75,6 +93,8 @@ JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_Utilities_returnAByteArray
  */
 JNIEXPORT jstring JNICALL Java_in_derros_jni_Utilities_stringManipulator
         (JNIEnv *env, jobject obj, jstring str, jobjectArray strObj1) {
+
+    Init();
     std::string s = env->GetStringUTFChars(str, (jboolean)false);
     std::cout << "NOW IN NATIVE STRING ENVIRONMENT!!" << std::endl;
     std::cout << "Your caller says: " << s << std::endl;

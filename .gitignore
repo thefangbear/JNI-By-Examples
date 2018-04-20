@@ -32,4 +32,13 @@
 # else
 *.class
 build/
-cmake-build-debug/
+
+
+# JetBrains Cache
+
+.idea/*
+cmake-build-debug/*
+
+# Visual Studio Code
+
+.vscode/*

@@ -1,0 +1,7 @@
+ 
+* linguist-vendored
+
+*.cpp linguist-vendored=false
+*.h   linguist-vendored=false
+java/in/derros/jni/*.java linguist-vendored=false
+java/*.java linguist-vendored=false
