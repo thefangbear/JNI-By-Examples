@@ -82,7 +82,7 @@ JNIEXPORT jstring JNICALL Java_in_derros_jni_Utilities_stringManipulator
     // iterate over
     for(int i = 0; i < env->GetArrayLength(strObj1); i++) {
         std::cout
-                << env->GetStringUTFChars((jstring)env->GetObjectArrayElement(strObj1, (jsize)i), (jboolean)false)
+                << env->GetStringUTFChars((jstring)env->GetObjectArrayElement(strObj1, (jsize)i), JNI_FALSE)
                 << std::endl;
     }
     s.append("::::::THIS IS APPENDED TEXT!!!! WARNING!!! WARNING!!!! :)");
