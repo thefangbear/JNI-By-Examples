@@ -39,7 +39,7 @@ to compile. After executing the command, you should see a `.class` file located 
 
 ### Part I.2: Generating C/C++ JNI Headers
 
-Now we have to find a way to plug ourselves into JVM via JNI. This is incredibaly easy, we do:
+Now we have to find a way to plug ourselves into JVM via JNI. This is incredibly easy, we do:
 ```
 javah ClassName
 ```
@@ -51,7 +51,7 @@ And now you'll find a strangely named (but not utterly random) `.h` header file 
 
 ### Part II: A glimpse into the JNI environment
 
-A typical header file such as `java/*.h` exists a bunch of oddly shaped C++/C function declarations. However, you'll have to write the aactual implementations yourself in a separate cpp or c file that references the header. Implementation is complete as long as you write specific implementations for each and every method. After that it's as easy as building everything into a shared library using cmake (which is really a piece of cake, if you have JVM properly installed and configured).
+A typical header file such as `java/*.h` exists a bunch of oddly shaped C++/C function declarations. However, you'll have to write the actual implementations yourself in a separate cpp or c file that references the header. Implementation is complete as long as you write specific implementations for each and every method. After that it's as easy as building everything into a shared library using cmake (which is really a piece of cake, if you have JVM properly installed and configured).
 
 A typical JNI function with a void return has a signature like this (for example):
 
@@ -116,7 +116,7 @@ equal to a C++ `char`/`unsigned char`.
 
 For **more examples** and getting a general "gist" of JNI to start, view the source code of this repository.
 
-This is about the end of your journy/actually coding/ a JNI application. Good luck!
+This is about the end of your journey/actually coding/ a JNI application. Good luck!
 
 ### Finale: Build
 
@@ -129,7 +129,7 @@ make
 ```
 And then you'll see the `libjnitests.so` file shiningly appearing under the `build` directory! For windows guys it's `libjnitests.dll` and for MacOS guys it's `libjnitests.dylib`, but they're really all the same.
 
-The final steps is really modifying the Java source fild for it to load from the appropriate library using `System.load` or `System.loadLibrary` (with is extra tricky-dicky), and cross your fingers for good luck! If you have any extra questions (which I'm pretty sure you have) due to the time limits I cannot describe more of the housekeeping work here. Proceed to `jnihelper.sh` and have a look at the prototypical shell script's implementations. I'm sure you'll find some inspirations there.
+The final steps is really modifying the Java source file for it to load from the appropriate library using `System.load` or `System.loadLibrary` (with is extra tricky-dicky), and cross your fingers for good luck! If you have any extra questions (which I'm pretty sure you have) due to the time limits I cannot describe more of the housekeeping work here. Proceed to `jnihelper.sh` and have a look at the prototypical shell script's implementations. I'm sure you'll find some inspirations there.
 
 ### Remarks
 
