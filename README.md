@@ -1,5 +1,18 @@
 # (Introductory) Java Native Interface Programming, By Examples
 
+## Table of contents
+* [Foreword](#foreword)
+* [A Written Introduction to Java Native Interface Programming](#a-written-introduction-to-java-native-interface-programming)
+    * [Part I: Writing a Java file that interfaces C/C++ Programs](#part-i-writing-a-java-file-that-interfaces-cc-programs)
+    * [Part I.2: Generating C/C++ JNI Headers](#part-i2-generating-cc-jni-headers)
+    * [Part II: A glimpse into the JNI environment](#part-ii-a-glimpse-into-the-jni-environment)
+    * [Finale: Build](#finale-build)
+    * [Remarks](#remarks)
+* [Author](#author)
+* [License](#license)
+
+## Foreword
+
 **Note**: I wrote this in early 2017 because of a need to offload image serialization tasks to C++ from Java (Java's GC, bad
  bad!) But now things may have changed with newer versions of Java 8 and 9. This repository is now seldomly updated, but
  you may still take it as a simple reference guide to get started. JNI is quite simple to program, and the most difficult
