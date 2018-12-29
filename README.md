@@ -1,5 +1,7 @@
 # (Introductory) Java Native Interface Programming, By Examples
 
+**Notice**: I'm now considering adding content to this tutorial. If you have proposals or new additions, please don't hesitate to [contribute](https://github.com/thefangbear/JNI-By-Examples/pulls).
+
 ## Table of contents
 * [Foreword](#foreword)
 * [A Written Introduction to Java Native Interface Programming](#a-written-introduction-to-java-native-interface-programming)
