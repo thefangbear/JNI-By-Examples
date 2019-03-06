@@ -21,18 +21,15 @@ class Utilities {
                             .normalize().toAbsolutePath().toString());
             }
         }
-        else
-        {
+        else {
             // Unix based
-            try
-            {
+            try {
                 System.load(
                     FileSystems.getDefault()
                             .getPath("./../build/libjnitests.so")  // Dynamic link
                             .normalize().toAbsolutePath().toString());
             }
-            catch (UnsatisfiedLinkError e)
-            {
+            catch (UnsatisfiedLinkError e) {
                 System.load(
                     FileSystems.getDefault()
                             .getPath("./../build/libjnitests.a")  // Static link
