@@ -13,23 +13,20 @@ class Utilities {
                     FileSystems.getDefault()
                             .getPath("./../build/libjnitests.dll")  // Dynamic link
                             .normalize().toAbsolutePath().toString());
-            }
-            catch (UnsatisfiedLinkError e) {
+            } catch (UnsatisfiedLinkError e) {
                 System.load(
                     FileSystems.getDefault()
                             .getPath("./../build/libjnitests.lib")  // Static link
                             .normalize().toAbsolutePath().toString());
             }
-        }
-        else {
+        } else {
             // Unix based
             try {
                 System.load(
                     FileSystems.getDefault()
                             .getPath("./../build/libjnitests.so")  // Dynamic link
                             .normalize().toAbsolutePath().toString());
-            }
-            catch (UnsatisfiedLinkError e) {
+            } catch (UnsatisfiedLinkError e) {
                 System.load(
                     FileSystems.getDefault()
                             .getPath("./../build/libjnitests.a")  // Static link
@@ -46,7 +43,7 @@ class Utilities {
 
     public void printUtil() { printMethod();  }
     public boolean boolTest() { return trueFalse();  }
-    public int pow(int b, int e) {return power(b, e); }
+    public int pow(int b, int e) { return power(b, e); }
     public byte[] testReturnBytes() { return returnAByteArray(); }
     public String manipulateStrings(String s, String[] s1) { return stringManipulator(s, s1);  }
 
